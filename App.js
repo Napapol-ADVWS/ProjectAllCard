@@ -6,7 +6,7 @@ import Login from './screens/login'
 import Register from './screens/Register'
 import LoginNumber from './screens/loginNumber'
 import OTPscreen from './screens/OTPsreen'
-
+//test
 
 export default class App extends Component{
   changePage = (page,data_1,data_2,data_3) =>{
