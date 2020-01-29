@@ -4,7 +4,6 @@ import StyleSheet from '../src/components/componentsLogin/styles'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { GoogleSignin, statusCodes, } from 'react-native-google-signin';
 import { LoginManager, AccessToken } from "react-native-fbsdk";
-
 var thisPage = ""
 export default class Login extends React.Component {
     componentDidMount() {
@@ -99,15 +98,9 @@ export default class Login extends React.Component {
                           })
                           .catch(error => console.log('error', error)); 
                         }
-                    )
-                    // console.log(
-                    //     "Login success with permissions: " +
-                    //     result.grantedPermissions.toString()
-                    // );
-                    //var data = result.grantedPermissions.toString() //ทดสอบส่งของมูลที่อยู่ใน Function ที่เป็น Permissions
-                                    
+                    )          
                 }
-            }.bind(this), //bind(this) ส่งข้อมูลที่่อยู่ภายใต้ Function ที่เป็น Permissions ออกมา
+            }.bind(this), 
             function (error) {
                 console.log("Login fail with error: " + error);
             },  
