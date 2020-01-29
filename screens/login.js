@@ -3,7 +3,7 @@ import { Text, View, Image, TouchableOpacity,AsyncStorage } from 'react-native';
 import StyleSheet from '../src/components/componentsLogin/styles'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { GoogleSignin, statusCodes, } from 'react-native-google-signin';
-import { LoginManager } from "react-native-fbsdk";
+import { LoginManager, AccessToken } from "react-native-fbsdk";
 
 var thisPage = ""
 export default class Login extends React.Component {
@@ -31,12 +31,13 @@ export default class Login extends React.Component {
         this.changePage = changePage;
         this.changePage(page, givenName, familyName, email);
     }
-    LoginByFacebook = (result) => {
-        console.log(result)
+    LoginByFacebook = (givenName, familyName, email) => {
+        // console.log("name: "+name)
+        // console.log("email: "+email)
         var page = "LoginFacebook"
         const { changePage } = this.props;
         this.changePage = changePage;
-        this.changePage(page);
+        this.changePage(page,givenName, familyName, email);
     }
     _signInGoogle = async () => {
         try {
@@ -57,19 +58,54 @@ export default class Login extends React.Component {
             console.log(error);
         }
     }
+    setLabels = (givenName, familyName, email) => {
+        this.LoginByFacebook(givenName, familyName, email)   
+      }
 
     _signInFacebook = () => {
-        LoginManager.logInWithPermissions(["public_profile"]).then(
+        LoginManager.logInWithPermissions(["public_profile", "email"]).then(
             function (result) {
                 if (result.isCancelled) {
                     console.log("Login cancelled");
                 } else {
-                    console.log(
-                        "Login success with permissions: " +
-                        result.grantedPermissions.toString()
-                    );
-                    var data = result.grantedPermissions.toString() //ทดสอบส่งของมูลที่อยู่ใน Function ที่เป็น Permissions
-                    this.LoginByFacebook(data)
+                    AccessToken.getCurrentAccessToken().then(
+                        async (data)=>{
+                          const { accessToken } = data;
+                          console.log(accessToken);
+                          const tokenTostring = accessToken.toString();
+                          var myHeaders = new Headers();
+                          myHeaders.append("Content-Type", "application/json");
+                          var raw = JSON.stringify({"fields":"email,name","access_token":tokenTostring});
+                          var requestOptions = {
+                          method: 'POST',
+                          headers: myHeaders,
+                          body: raw,
+                          redirect: 'follow'
+                          };
+                         await fetch("https://graph.facebook.com/v5.0/me", requestOptions)
+                          .then(response => response.text())
+                          .then(result => {
+                              const resStr = result.toString();                              
+                              const splitStr = resStr.split('"');
+                              const splitname = splitStr[7].split(' ');
+                              const fname = splitname[0];
+                              const lname = splitname[1];
+                              const splitemail = splitStr[3].split('\\u0040');
+                              const email = splitemail[0]+"@"+splitemail[1];
+                              console.log(fname)
+                              console.log(lname)
+                              console.log(email)
+                             this.LoginByFacebook(fname,lname,email)      
+                          })
+                          .catch(error => console.log('error', error)); 
+                        }
+                    )
+                    // console.log(
+                    //     "Login success with permissions: " +
+                    //     result.grantedPermissions.toString()
+                    // );
+                    //var data = result.grantedPermissions.toString() //ทดสอบส่งของมูลที่อยู่ใน Function ที่เป็น Permissions
+                                    
                 }
             }.bind(this), //bind(this) ส่งข้อมูลที่่อยู่ภายใต้ Function ที่เป็น Permissions ออกมา
             function (error) {

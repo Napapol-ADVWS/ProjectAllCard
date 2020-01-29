@@ -32,6 +32,7 @@ export default class Register extends Component {
             familyName=this.props.familyName,
             phonenumber=this.props.phonenumber
         } = this.props
+       
         return (
            <View>
                 <View
