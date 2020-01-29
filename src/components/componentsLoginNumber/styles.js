@@ -14,6 +14,11 @@ export default StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
       },
+      textphoneThai:{
+        fontSize:15,
+        color: '#182e68',
+        fontWeight: 'bold',
+      },
       inputContainer: { 
         borderBottomColor: '#F5FCFF',
         backgroundColor: '#FFFFFF',
@@ -33,5 +38,13 @@ export default StyleSheet.create({
         backgroundColor: '#dd7534',
         borderRadius: 100 / 5,
         padding: 10,
+      },
+      gradient: {
+        //flex: 1,
+        justifyContent: 'center',
+        alignItems:'center',
+        width:150,
+        height:60,
+        borderRadius: 100 / 5,
       },
 });

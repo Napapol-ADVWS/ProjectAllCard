@@ -4,14 +4,19 @@ export default StyleSheet.create({
       textRegister: {
         fontSize:20,
         fontWeight: 'bold',
-        color: '#182e68',
+        color: '#FFF',
         paddingBottom: 10,
         marginTop:20,
         marginBottom:20,
       },
       textbuttonRegis:{
         color: '#fff',
-        fontSize: 15,
+        fontSize: 20,
+        fontWeight: 'bold',
+      },
+      textphoneThai:{
+        fontSize:15,
+        color: '#182e68',
         fontWeight: 'bold',
       },
       inputContainer: {
@@ -25,14 +30,21 @@ export default StyleSheet.create({
         alignItems:'center'
       },
       buttonRegisSubmit: {
-        width:300,
-        height:60,
+        width:360,
+        height:75,
         marginTop: 10,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#dd7534',
-        borderRadius: 100 / 5,
+        //borderRadius: 100 / 5,
         padding: 10,
+      },
+      gradient: {
+        //flex: 1,
+        justifyContent: 'center',
+        alignItems:'center',
+        width:370,
+        height:75,
       },
       cardRegister:{ 
         backgroundColor:'#ddd',

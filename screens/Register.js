@@ -3,6 +3,7 @@ import { View, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Regis } from '../src/components/componentsRegister/Regis_component';
 var Next = "";
+var MobileNumber = "";
 export default class Register extends Component {
     Goto = () => {
         var page = ""
@@ -18,11 +19,12 @@ export default class Register extends Component {
         }
         const {changePage}=this.props;
         this.changePage= changePage;
-        this.changePage(page);
+        this.changePage(page,MobileNumber);
         Next="";
     }
-    Nextto = () =>{
+    Nextto = (TextInputValue) =>{
         Next = "OTPscreen"
+        MobileNumber = TextInputValue
         this.Goto();
     }
     render() {

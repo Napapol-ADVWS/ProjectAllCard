@@ -52,10 +52,10 @@ export default class App extends Component{
             DisplayPage = <LoginNumber changePage ={this.changePage}/>
           break;
         case 'Register':
-            DisplayPage = <Register changePage ={this.changePage} phonenumber={phonenumber}/>
+            DisplayPage = <Register changePage ={this.changePage} phonenumber={phonenumber} page={page}/>
           break;
         case 'OTPscreen':
-            DisplayPage = <OTPscreen changePage={this.changePage}/>
+            DisplayPage = <OTPscreen changePage={this.changePage} phonenumber={phonenumber}/>
           break;
     }
     return(
