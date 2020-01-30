@@ -6,6 +6,7 @@ import Login from './screens/login'
 import Register from './screens/Register'
 import LoginNumber from './screens/loginNumber'
 import OTPscreen from './screens/OTPsreen'
+import Terms from './screens/TermsOfUse'
 
 
 export default class App extends Component{
@@ -50,6 +51,9 @@ export default class App extends Component{
           break;
         case 'LoginNumber':
             DisplayPage = <LoginNumber changePage ={this.changePage}/>
+          break;
+        case 'Terms':
+            DisplayPage = <Terms changePage ={this.changePage}/>
           break;
         case 'Register':
             DisplayPage = <Register changePage ={this.changePage} phonenumber={phonenumber} page={page}/>

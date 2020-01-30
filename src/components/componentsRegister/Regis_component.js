@@ -61,7 +61,7 @@ class Regis extends React.Component {
                         keyboardType="numeric"
                     />
                 </View>
-                {/*<View style={StyleSheet.inputContainer}>
+                <View style={StyleSheet.inputContainer}>
                     <Text style={{ paddingLeft: 10 }} />
                     <Icon name="envelope-o" color="#182e68" size={30} />
                     <Text style={{ paddingRight: 8 }} />
@@ -70,7 +70,7 @@ class Regis extends React.Component {
                         value={this.props.email}
                         keyboardType="email-address"
                     />
-                </View>*/}
+                </View>
 
                 </View>
                 <View style={{marginTop:210}}/>

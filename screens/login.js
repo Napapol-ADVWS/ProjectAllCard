@@ -135,7 +135,7 @@ export default class Login extends React.Component {
                         <Text style={StyleSheet.textLogin2}> นโยบายความเป็นส่วนตัว </Text>
                     </TouchableOpacity>
                     <Text style={{ fontSize: 10, color: '#FFFFFF' }}>|</Text>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.Goto(thisPage = "Terms")}>
                         <Text style={StyleSheet.textLogin2}> เงื่อนไขการใช้ </Text>
                     </TouchableOpacity>
                 </View>
