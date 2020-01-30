@@ -32,7 +32,7 @@ export default StyleSheet.create({
       buttonRegisSubmit: {
         width:360,
         height:75,
-        marginTop: 10,
+        marginBottom: 20 ,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#dd7534',

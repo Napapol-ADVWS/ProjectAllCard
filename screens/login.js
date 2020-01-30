@@ -42,7 +42,7 @@ export default class Login extends React.Component {
         try {
             await GoogleSignin.hasPlayServices();
             const userInfo = await GoogleSignin.signIn();
-            console.log(userInfo.user.name);
+            console.log(userInfo);
             this.LoginByGoogle(userInfo.user.givenName, userInfo.user.familyName, userInfo.user.email)
         } catch (error) {
             if (error.code === statusCodes.SIGN_IN_CANCELLED) {

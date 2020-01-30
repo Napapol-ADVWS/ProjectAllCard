@@ -73,7 +73,7 @@ class Regis extends React.Component {
                 </View>
 
                 </View>
-                <View style={{marginTop:210}}/>
+                <View style={{marginTop:160}}/>
                 <View style={{alignItems:'center'}}>
                 
                     <TouchableOpacity style={StyleSheet.buttonRegisSubmit} onPress={this.Goto}>
